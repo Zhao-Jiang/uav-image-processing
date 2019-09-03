@@ -35,8 +35,8 @@ for tif in list_tif:
         Nr=r/(b+g+r)
         
 #        ExG=Ng*2-Nr-Nb
-#        ExR=Nr*1.4-Nb
-        ExG_ExR = (Ng*2 - Nr - Nb) - (Nr*1.4 - Nb)
+#        ExR=Nr*1.4-Ng
+        ExG_ExR = (Ng*2 - Nr - Nb) - (Nr*1.4 - Ng) # =Ng*3 - Nr*2.4 - Nb
         
         # 将计算好的NDVI保存为GeoTiff文件
         gtiff_driver = gdal.GetDriverByName('GTiff')
