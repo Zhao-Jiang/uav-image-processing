@@ -3,6 +3,7 @@
 Created on Fri Jan 25 15:11:37 2019
 
 Extracting average reflectancefor headwall-nano hyperspectral image.
+arcpy and pandas needed (pandas.Dataframe.to_excel() can be replaced with numpy.savetxt())
 
 @author: jiangzhao
 """
@@ -12,8 +13,7 @@ from arcpy.sa import *
 from arcpy import env
 import os
 
- Data\2019\2019_Rice_Drought\headwall\0812hyper_temp\raw_17184_rd_rf_or1.tif'
-#ROI = r'Z:\Research Data\2019\2019_Rice_Drought\ROI\0812hyper17184.shp'
+"""4 parameters"""
 rst = r'Z:\Rape_temporal\0424\6304.tif'
 ROI = r'Z:\Rape_temporal\BUFFER\buffer6304\XiaoNei.shp'
 ROI_num = 24
