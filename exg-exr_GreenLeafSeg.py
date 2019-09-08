@@ -3,6 +3,9 @@
 """
 Created on Tue Sep  3 09:51:18 2019
 
+Calculating exg-exr and do the segmentation of green leave.
+gdal(python3) needed
+
 @author: jz
 """
 
