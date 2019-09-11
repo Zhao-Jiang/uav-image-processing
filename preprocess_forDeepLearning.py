@@ -71,18 +71,17 @@ def imgPre(imgRaster, labelRaster, tileSize=(256,256), stride=64, saveTiles=True
         Y = np.array(labels)
         return (X, Y)
     
-## loading tiles and saving tiles as a dataset
-#(X, Y) = imgPre(
-#        imgRaster='/home/jz/Desktop/GDAL/data/img.tif', 
-#        labelRaster='/home/jz/Desktop/GDAL/data/label.tif', 
-#        tileSize=(256,256), 
-#        stride=64, 
-#        saveTiles=True)
-## loading tiles for training without saving
-#(X, Y) = imgPre(
-#        imgRaster='/home/jz/Desktop/GDAL/data/img.tif', 
-#        labelRaster='/home/jz/Desktop/GDAL/data/label.tif', 
-#        tileSize=(256,256), 
-#        stride=64, 
-#        saveTiles=False)
-
+# loading tiles and saving tiles as a dataset
+(X, Y) = imgPre(
+        imgRaster='./wholeTifData/img.tif', 
+        labelRaster='./wholeTifData/label.tif', 
+        tileSize=(256,256), 
+        stride=64, 
+        saveTiles=True)
+# loading tiles for training without saving
+(X, Y) = imgPre(
+        imgRaster='./wholeTifData/img.tif', 
+        labelRaster='./wholeTifData/label.tif', 
+        tileSize=(256,256), 
+        stride=64, 
+        saveTiles=False)
