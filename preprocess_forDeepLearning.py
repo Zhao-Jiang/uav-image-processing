@@ -40,7 +40,7 @@ def imgPre(imgRaster, labelRaster, tileSize=(256,256), stride=64, saveTiles=True
         print('Could not open the file ' + imgTif)
     else:
         tile_rows = int((imgTif.RasterYSize-tileSize[0]+stride)/stride)
-        tile_cols = int((imgTif.RasterXSize-tileSize[0]+stride)/stride)
+        tile_cols = int((imgTif.RasterXSize-tileSize[1]+stride)/stride)
         
         imgArray = imgTif.ReadAsArray().swapaxes(0,1).swapaxes(1,2)
 #        labelArray = (labelTif.ReadAsArray()/labelArray.max()).astype(np.uint8)
