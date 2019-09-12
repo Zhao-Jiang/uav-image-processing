@@ -36,6 +36,8 @@ def imgPre(imgRaster, labelRaster, tileSize=(256,256), stride=64, saveTiles=True
         labels_path = filepath + '/labels'
         os.mkdir(imgs_path)
         os.mkdir(labels_path)
+    else:
+        print("Loading data as tiles from the whole tif image without saving.")
     if imgTif is None:
         print('Could not open the file ' + imgTif)
     else:
@@ -66,6 +68,10 @@ def imgPre(imgRaster, labelRaster, tileSize=(256,256), stride=64, saveTiles=True
                     if saveTiles:
                         cv2.imwrite(imgs_path+'/t_'+str(i)+'_'+str(j)+'.jpg', img_temp)
                         cv2.imwrite(labels_path+'/t_'+str(i)+'_'+str(j)+'.jpg', label_temp)
+                    else:
+                        continue
+                else:
+                    continue
         
         X = np.array(imgs)/255.0
         Y = np.array(labels)/255
