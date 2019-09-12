@@ -42,7 +42,7 @@ def imgPre(imgRaster, labelRaster, tileSize=(256,256), stride=64, saveTiles=True
         tile_rows = int((imgTif.RasterYSize-tileSize[0]+stride)/stride)
         tile_cols = int((imgTif.RasterXSize-tileSize[1]+stride)/stride)
         
-        imgArray = imgTif.ReadAsArray().swapaxes(0,1).swapaxes(1,2)/255.0
+        imgArray = imgTif.ReadAsArray().swapaxes(0,1).swapaxes(1,2)
 #        labelArray = (labelTif.ReadAsArray()/labelArray.max()).astype(np.uint8)
         labelArray = labelTif.ReadAsArray()
         
@@ -67,7 +67,7 @@ def imgPre(imgRaster, labelRaster, tileSize=(256,256), stride=64, saveTiles=True
                         cv2.imwrite(imgs_path+'/t_'+str(i)+'_'+str(j)+'.jpg', img_temp)
                         cv2.imwrite(labels_path+'/t_'+str(i)+'_'+str(j)+'.jpg', label_temp)
         
-        X = np.array(imgs)
+        X = np.array(imgs)/255.0
         Y = np.array(labels)
         return (X, Y)
     
