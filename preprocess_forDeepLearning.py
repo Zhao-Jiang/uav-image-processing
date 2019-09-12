@@ -68,7 +68,7 @@ def imgPre(imgRaster, labelRaster, tileSize=(256,256), stride=64, saveTiles=True
                         cv2.imwrite(labels_path+'/t_'+str(i)+'_'+str(j)+'.jpg', label_temp)
         
         X = np.array(imgs)/255.0
-        Y = np.array(labels)
+        Y = np.array(labels)/255
         return (X, Y)
     
 # loading tiles and saving tiles as a dataset
