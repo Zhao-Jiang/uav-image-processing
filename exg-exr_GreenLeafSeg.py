@@ -14,8 +14,15 @@ import os
 import numpy as np
 from osgeo import gdal
 import glob
+import argparse
 
-dataDir = '/media/jz/Elements/2018_Rice/RGB/daPeng/'
+parser = argparse.ArgumentParser(
+    description='Script to run ExG-ExR segmentation ')
+parser.add_argument("--dataDir", help="path to orthomosaic dir")
+args = parser.parse_args()
+dataDir = args.data + '/'
+
+# dataDir = '/media/jz/Elements/2018_Rice/RGB/daPeng/'
 list_tif = glob.glob(dataDir+'*.tif')
 out_path = dataDir + 'result/'
 os.mkdir(out_path)
