@@ -18,9 +18,9 @@ import argparse
 
 parser = argparse.ArgumentParser(
     description='Script to run ExG-ExR segmentation ')
-parser.add_argument("--dataDir", help="path to orthomosaic dir")
+parser.add_argument("--dataDir", help="path to orthomosaic dir",default='.')
 args = parser.parse_args()
-dataDir = args.data + '/'
+dataDir = args.dataDir + '/'
 
 # dataDir = '/media/jz/Elements/2018_Rice/RGB/daPeng/'
 list_tif = glob.glob(dataDir+'*.tif')
