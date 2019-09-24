@@ -25,7 +25,10 @@ dataDir = args.data + '/'
 # dataDir = '/media/jz/Elements/2018_Rice/RGB/daPeng/'
 list_tif = glob.glob(dataDir+'*.tif')
 out_path = dataDir + 'result/'
-os.mkdir(out_path)
+try:
+    os.mkdir(out_path)
+except:
+    pass
 
 for tif in list_tif:
     in_ds = gdal.Open(tif)
@@ -40,6 +43,8 @@ for tif in list_tif:
         g = in_ds.GetRasterBand(2).ReadAsArray().astype(np.float32)
         b = in_ds.GetRasterBand(3).ReadAsArray().astype(np.float32)
         
+        Lightness = np.sqrt((r**2+g**2+b**2)/3.0)
+        
         Nb=b/(b+g+r)
         Ng=g/(b+g+r)
         Nr=r/(b+g+r)
@@ -49,8 +54,8 @@ for tif in list_tif:
         ExG_ExR = (Ng*2 - Nr - Nb) - (Nr*1.4 - Ng) # =Ng*3 - Nr*2.4 - Nb
         
         ExG_ExR_binary = np.zeros(ExG_ExR.shape).astype(np.uint8)
-        ExG_ExR_binary[ExG_ExR<0] = 0
         ExG_ExR_binary[ExG_ExR>=0] = 1
+        ExG_ExR_binary[Lightness<np.mean(Lightness)] = 0
         
         ExG_ExR_masked = ExG_ExR
         ExG_ExR_masked[ExG_ExR_binary==0] = 0
