@@ -23,7 +23,7 @@ args = parser.parse_args()
 dataDir = args.dataDir + '/'
 
 # dataDir = '/media/jz/Elements/2018_Rice/RGB/daPeng/'
-list_tif = glob.glob(dataDir+'*.tif')
+list_tif = glob.glob(dataDir+'SONY*ortho.tif')
 out_path = dataDir + 'result/'
 try:
     os.mkdir(out_path)
